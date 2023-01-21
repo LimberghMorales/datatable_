@@ -3,7 +3,7 @@
     $PDO=$conexion;
     $statement=$PDO->prepare("SELECT * FROM alumnos");
     $statement->execute();
-    $users=$statement->fetchAll();
+    $alumnos=$statement->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +14,12 @@
     <title>Document</title>
     
     <!-- jquery -->
-    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
-    <!-- DataTables JS library -->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <!-- DataTables JBootstrap -->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></script>
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <!-- DataTables JS library -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  </head>
     <script>
         $(document).ready( function () {
             $('#table_id').DataTable(
@@ -33,28 +31,25 @@
             );}
             );
     </script>
-  </head>
-
 <body>
-<div class="container pt-3">
+    
 <table id="table_id" class="display">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
+            <th>Id</th>
+            <th>Apellidos</th>
+            <th>Nombre</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($users as $user): ?>
+        <?php foreach($alumnos as $alumno): ?>
             <tr>
-                <td><?php echo $user[0] ?></td>
-                <td><?php echo $user[1] ?></td>
-                <td><?php echo $user[2] ?></td>
+                <td><?php echo $alumno[0] ?></td>
+                <td><?php echo $alumno[1] ?></td>
+                <td><?php echo $alumno[2] ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-</div>
 </body>
 </html>
